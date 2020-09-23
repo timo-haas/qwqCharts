@@ -39,8 +39,8 @@ export function qwqCreateScales<L, T>(
   const xScale = scaleLinear().domain([minX, maxX]).range(xScaleRange);
 
   const scaleArea: IQwqLineChartScaleArea = {
-    xScale: xScale,
-    yScale: yScale,
+    xScale,
+    yScale,
     alignment: {
       vertical: isTopAligned ? 'top' : 'bottom',
       horizontal: isRightAligned ? 'right' : 'left',
