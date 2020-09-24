@@ -17,11 +17,7 @@
   "bugs": {
     "url": "https://github.com/timo-haas/qwqCharts/issues"
   },
-  "main": "./lib/cjs/index.js",
-  "module": "./lib/esm/index.js",
-  "files": [
-    "dist/"
-  ],
+  "private": true,
   "homepage": "https://github.com/timo-haas/qwqCharts#readme",
   "devDependencies": {
     "@types/d3": "5.7.2",
