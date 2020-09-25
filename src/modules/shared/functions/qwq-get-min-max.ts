@@ -16,8 +16,8 @@ export function qwqGetMinMax(
     }
   }
 
-  let minOrUndefined: number | undefined = undefined;
-  let maxOrUndefined: number | undefined = undefined;
+  let minOrUndefined: number | undefined;
+  let maxOrUndefined: number | undefined;
 
   for (let index = 0; index < flattenData.length; index++) {
     const num = flattenData[index];
