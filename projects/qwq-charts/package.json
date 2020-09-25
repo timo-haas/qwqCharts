@@ -1,0 +1,15 @@
+{
+  "name": "qwq-charts",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "d3": "6.1.1"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/d3": "5.7.2",
+    "tslint": "6.1.0",
+    "typescript": "3.9.5"
+  }
+}

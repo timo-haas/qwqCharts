@@ -9,7 +9,7 @@ async function createChart(chartIndex) {
     case "line": {
       return Promise.all([
         getLineChartData(chartIndex),
-        import("../dist/cjs/line-chart/index.js"),
+        import("../dist/line.bundle.js"),
       ]).then(([chartData, lineChartModule]) => {
         const svgElement = lineChartModule.createChart(chartData, {
           showPoints: true,
@@ -24,7 +24,7 @@ async function createChart(chartIndex) {
     case "pie": {
       return Promise.all([
         getPieChartData(chartIndex),
-        import("../dist/cjs/pie-chart/index.js"),
+        import("../dist/pie.bundle.js"),
       ]).then(([chartData, pieChartModule]) => {
         const svgElement = pieChartModule.createChart(chartData, {
           pieType: "normal",
@@ -38,7 +38,7 @@ async function createChart(chartIndex) {
     default: {
       return Promise.all([
         getBarChartData(chartIndex),
-        import("../dist/cjs/bar-chart/index.js"),
+        import("../dist/bar.bundle.js"),
       ]).then(([chartData, barChartModule]) => {
         const svgElement = barChartModule.createChart(chartData, {
           direction: "vertical",
