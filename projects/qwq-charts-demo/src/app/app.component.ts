@@ -1,4 +1,5 @@
 import { AfterViewInit, Component } from '@angular/core';
+import { createLineChart } from 'qwq-charts';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,7 @@ export class AppComponent implements AfterViewInit {
   private chartType = 'line';
 
   ngAfterViewInit(): void {
+    this.clearGrid();
     const rangeArray = Array.from(Array(16).keys());
 
     rangeArray.reduce(async (memo, chartIndex) => {
@@ -25,48 +27,47 @@ export class AppComponent implements AfterViewInit {
   ): Promise<SVGSVGElement> {
     switch (chartType) {
       case 'line': {
-        return Promise.all([
-          this.getLineChartData(chartIndex),
-          import('dist/qwq-charts/lib/line-chart'),
-        ]).then(([chartData, lineChartModule]) => {
-          const svgElement = lineChartModule.createLineChart(chartData, {
-            showPoints: true,
-            lineType: 'straight',
-            stackedType: 'none',
-            dataValueFx: (columnValues, rowIndex) => columnValues[rowIndex],
-            labelValueFx: (label) => label,
-          });
-          return svgElement;
-        });
+        return Promise.all([this.getLineChartData(chartIndex)]).then(
+          ([chartData]) => {
+            const svgElement = createLineChart(chartData, {
+              showPoints: true,
+              lineType: 'straight',
+              stackedType: 'none',
+              dataValueFx: (columnValues, rowIndex) => columnValues[rowIndex],
+              labelValueFx: (label) => label,
+            });
+            return svgElement;
+          }
+        );
       }
-      case 'pie': {
-        return Promise.all([
-          this.getPieChartData(chartIndex),
-          import('dist/qwq-charts/lib/pie-chart'),
-        ]).then(([chartData, pieChartModule]) => {
-          const svgElement = pieChartModule.createPieChart(chartData, {
-            pieType: 'normal',
-            dataValueFx: (dataItem) => dataItem,
-            labelValueFx: (label) => label,
-          });
-          return svgElement;
-        });
-      }
-      case 'bar':
-      default: {
-        return Promise.all([
-          this.getBarChartData(chartIndex),
-          import('dist/qwq-charts/lib/bar-chart'),
-        ]).then(([chartData, barChartModule]) => {
-          const svgElement = barChartModule.createBarChart(chartData, {
-            direction: 'vertical',
-            stackedType: 'stacked',
-            dataValueFx: (columnValues, rowIndex) => columnValues[rowIndex],
-            labelValueFx: (label) => '' + label,
-          });
-          return svgElement;
-        });
-      }
+      // case 'pie': {
+      //   return Promise.all([
+      //     this.getPieChartData(chartIndex),
+      //     import('dist/qwq-charts/lib/pie-chart'),
+      //   ]).then(([chartData, pieChartModule]) => {
+      //     const svgElement = pieChartModule.createPieChart(chartData, {
+      //       pieType: 'normal',
+      //       dataValueFx: (dataItem) => dataItem,
+      //       labelValueFx: (label) => label,
+      //     });
+      //     return svgElement;
+      //   });
+      // }
+      // case 'bar':
+      // default: {
+      //   return Promise.all([
+      //     this.getBarChartData(chartIndex),
+      //     import('dist/qwq-charts/lib/bar-chart'),
+      //   ]).then(([chartData, barChartModule]) => {
+      //     const svgElement = barChartModule.createBarChart(chartData, {
+      //       direction: 'vertical',
+      //       stackedType: 'stacked',
+      //       dataValueFx: (columnValues, rowIndex) => columnValues[rowIndex],
+      //       labelValueFx: (label) => '' + label,
+      //     });
+      //     return svgElement;
+      //   });
+      // }
     }
   }
 
@@ -179,9 +180,15 @@ export class AppComponent implements AfterViewInit {
     if (!parent) {
       return;
     }
+    parent.appendChild(svgElement);
+  }
+  private clearGrid(): void {
+    const parent = document.getElementById('grid');
+    if (!parent) {
+      return;
+    }
     while (parent.lastChild) {
       parent.removeChild(parent.lastChild);
     }
-    parent.appendChild(svgElement);
   }
 }
