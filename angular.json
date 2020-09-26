@@ -42,6 +42,123 @@
           }
         }
       }
+    },
+    "qwq-charts-demo": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/qwq-charts-demo",
+      "sourceRoot": "projects/qwq-charts-demo/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/qwq-charts-demo",
+            "index": "projects/qwq-charts-demo/src/index.html",
+            "main": "projects/qwq-charts-demo/src/main.ts",
+            "polyfills": "projects/qwq-charts-demo/src/polyfills.ts",
+            "tsConfig": "projects/qwq-charts-demo/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/qwq-charts-demo/src/favicon.ico",
+              "projects/qwq-charts-demo/src/assets"
+            ],
+            "styles": [
+              "projects/qwq-charts-demo/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/qwq-charts-demo/src/environments/environment.ts",
+                  "with": "projects/qwq-charts-demo/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "qwq-charts-demo:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "qwq-charts-demo:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "qwq-charts-demo:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/qwq-charts-demo/src/test.ts",
+            "polyfills": "projects/qwq-charts-demo/src/polyfills.ts",
+            "tsConfig": "projects/qwq-charts-demo/tsconfig.spec.json",
+            "karmaConfig": "projects/qwq-charts-demo/karma.conf.js",
+            "assets": [
+              "projects/qwq-charts-demo/src/favicon.ico",
+              "projects/qwq-charts-demo/src/assets"
+            ],
+            "styles": [
+              "projects/qwq-charts-demo/src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/qwq-charts-demo/tsconfig.app.json",
+              "projects/qwq-charts-demo/tsconfig.spec.json",
+              "projects/qwq-charts-demo/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/qwq-charts-demo/e2e/protractor.conf.js",
+            "devServerTarget": "qwq-charts-demo:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "qwq-charts-demo:serve:production"
+            }
+          }
+        }
+      }
     }},
   "defaultProject": "qwq-charts"
 }

@@ -12,6 +12,12 @@
     },
     {
       "path": "./projects/qwq-charts/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/qwq-charts-demo/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/qwq-charts-demo/tsconfig.spec.json"
     }
 ]
 }
