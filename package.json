@@ -5,11 +5,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve qwq-charts-demo",
-    "build": "ng build qwq-charts --ts-config ./projects/qwq-charts/tsconfig.lib.json",
+    "build": "ng build qwq-charts --prod --ts-config ./projects/qwq-charts/tsconfig.lib.json",
     "test": "ng test qwq-charts-demo",
     "lint": "ng lint qwq-charts",
     "e2e": "ng e2e",
-    "analyze": "ng build qwq-charts-demo --prod --stats-json && webpack-bundle-analyzer ./dist/qwq-charts-demo/stats-es2015.json"
+    "analyze": "ng build qwq-charts-demo --prod --stats-json && webpack-bundle-analyzer ./dist/qwq-charts-demo/stats.json"
   },
   "repository": {
     "type": "git",
