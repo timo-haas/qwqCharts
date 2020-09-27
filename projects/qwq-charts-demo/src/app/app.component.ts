@@ -1,4 +1,5 @@
 import { AfterViewInit, Component } from '@angular/core';
+import { createLineChart } from 'qwq-charts';
 
 @Component({
   selector: 'app-root',
@@ -39,18 +40,18 @@ export class AppComponent implements AfterViewInit {
           }
         );
       }
-      case 'pie': {
-        return Promise.all([this.getPieChartData(chartIndex)]).then(
-          ([chartData]) => {
-            const svgElement = createPieChart(chartData, {
-              pieType: 'normal',
-              dataValueFx: (dataItem) => dataItem,
-              labelValueFx: (label) => label,
-            });
-            return svgElement;
-          }
-        );
-      }
+      // case 'pie': {
+      //   return Promise.all([this.getPieChartData(chartIndex)]).then(
+      //     ([chartData]) => {
+      //       const svgElement = createPieChart(chartData, {
+      //         pieType: 'normal',
+      //         dataValueFx: (dataItem) => dataItem,
+      //         labelValueFx: (label) => label,
+      //       });
+      //       return svgElement;
+      //     }
+      //   );
+      // }
       // case 'bar':
       // default: {
       //   return Promise.all([
