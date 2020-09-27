@@ -17,7 +17,6 @@
     ],
     "paths": {
       "qwq-charts": [
-        "dist/qwq-charts/qwq-charts",
         "dist/qwq-charts"
       ]
     }
