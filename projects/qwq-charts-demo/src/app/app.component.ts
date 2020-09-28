@@ -1,5 +1,5 @@
 import { AfterViewInit, Component } from '@angular/core';
-import { createLineChart } from 'qwq-charts';
+import { createBarChart, createLineChart, createPieChart } from 'qwq-charts';
 
 @Component({
   selector: 'app-root',
@@ -40,33 +40,32 @@ export class AppComponent implements AfterViewInit {
           }
         );
       }
-      // case 'pie': {
-      //   return Promise.all([this.getPieChartData(chartIndex)]).then(
-      //     ([chartData]) => {
-      //       const svgElement = createPieChart(chartData, {
-      //         pieType: 'normal',
-      //         dataValueFx: (dataItem) => dataItem,
-      //         labelValueFx: (label) => label,
-      //       });
-      //       return svgElement;
-      //     }
-      //   );
-      // }
-      // case 'bar':
-      // default: {
-      //   return Promise.all([
-      //     this.getBarChartData(chartIndex),
-      //     import('dist/qwq-charts/lib/bar-chart'),
-      //   ]).then(([chartData, barChartModule]) => {
-      //     const svgElement = barChartModule.createBarChart(chartData, {
-      //       direction: 'vertical',
-      //       stackedType: 'stacked',
-      //       dataValueFx: (columnValues, rowIndex) => columnValues[rowIndex],
-      //       labelValueFx: (label) => '' + label,
-      //     });
-      //     return svgElement;
-      //   });
-      // }
+      case 'pie': {
+        return Promise.all([this.getPieChartData(chartIndex)]).then(
+          ([chartData]) => {
+            const svgElement = createPieChart(chartData, {
+              pieType: 'normal',
+              dataValueFx: (dataItem) => dataItem,
+              labelValueFx: (label) => label,
+            });
+            return svgElement;
+          }
+        );
+      }
+      case 'bar':
+      default: {
+        return Promise.all([this.getBarChartData(chartIndex)]).then(
+          ([chartData]) => {
+            const svgElement = createBarChart(chartData, {
+              direction: 'vertical',
+              stackedType: 'stacked',
+              dataValueFx: (columnValues, rowIndex) => columnValues[rowIndex],
+              labelValueFx: (label) => '' + label,
+            });
+            return svgElement;
+          }
+        );
+      }
     }
   }
 
