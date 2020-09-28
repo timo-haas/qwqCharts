@@ -3,6 +3,7 @@ import {
   IQwqLineChartData,
   IQwqLineChartOptions,
   IQwqLineChartScaleOptions,
+  QwqLineChartLineType,
 } from './classes';
 import {
   qwqCreateLinePoints,
@@ -70,21 +71,20 @@ export function qwqCreateLineChart<L, T>(
       return yScale(dataValue);
     },
   };
-
   const lineWidth = 0.15;
-
-  const lineFx = qwqUnstackedLine(scaleOptions, strictChartOptions);
-  dataGroupSelection
-    .append('path')
-    .attr('class', 'qwq-line-chart-line')
-    .attr('d', (pointsPerRow) => lineFx(pointsPerRow))
-    .attr('fill', 'transparent')
-    .attr('stroke-width', `${lineWidth}em`)
-    .attr(
-      'stroke',
-      (pointsPerRow) => (pointsPerRow[0] && pointsPerRow[0].color) || ''
-    );
-
+  if (strictChartOptions.lineType !== QwqLineChartLineType.none) {
+    const lineFx = qwqUnstackedLine(scaleOptions, strictChartOptions);
+    dataGroupSelection
+      .append('path')
+      .attr('class', 'qwq-line-chart-line')
+      .attr('d', (pointsPerRow) => lineFx(pointsPerRow))
+      .attr('fill', 'transparent')
+      .attr('stroke-width', `${lineWidth}em`)
+      .attr(
+        'stroke',
+        (pointsPerRow) => (pointsPerRow[0] && pointsPerRow[0].color) || ''
+      );
+  }
   if (strictChartOptions.showPoints) {
     const circle = dataGroupSelection
       .selectAll('.qwq-line-chart-point')
