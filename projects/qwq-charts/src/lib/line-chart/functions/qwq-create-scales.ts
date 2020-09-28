@@ -1,5 +1,5 @@
 import { scaleLinear } from 'd3';
-import { qwqGetMinMax } from '../../shared';
+import { qwqGetMinMax } from 'qwq-charts-shared';
 import {
   IQwqLineChartData,
   IQwqLineChartOptionsStrict,

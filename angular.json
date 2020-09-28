@@ -159,6 +159,46 @@
           }
         }
       }
+    },
+    "qwq-charts-shared": {
+      "projectType": "library",
+      "root": "projects/qwq-charts-shared",
+      "sourceRoot": "projects/qwq-charts-shared/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/qwq-charts-shared/tsconfig.lib.json",
+            "project": "projects/qwq-charts-shared/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/qwq-charts-shared/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/qwq-charts-shared/src/test.ts",
+            "tsConfig": "projects/qwq-charts-shared/tsconfig.spec.json",
+            "karmaConfig": "projects/qwq-charts-shared/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/qwq-charts-shared/tsconfig.lib.json",
+              "projects/qwq-charts-shared/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }},
   "defaultProject": "qwq-charts"
 }

@@ -19,11 +19,5 @@
   "exclude": [
     "src/test.ts",
     "**/*.spec.ts"
-  ],
-  "paths": {
-    "qwq-charts-shared": [
-      "dist/qwq-charts-shared/qwq-charts-shared",
-      "dist/qwq-charts-shared"
-    ]
-  }
+  ]
 }

@@ -1,4 +1,4 @@
-import { qwqGetMinMax } from '../../shared';
+import { qwqGetMinMax } from 'qwq-charts-shared';
 import {
   IQwqBarChartData,
   IQwqBarChartOptionsStrict,

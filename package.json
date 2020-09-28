@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve qwq-charts-demo",
-    "build": "ng build qwq-charts --prod --ts-config ./projects/qwq-charts/tsconfig.lib.json",
+    "build": "ng build qwq-charts-shared --prod && ng build qwq-charts --prod",
     "test": "ng test qwq-charts-demo",
     "lint": "ng lint qwq-charts",
     "e2e": "ng e2e",

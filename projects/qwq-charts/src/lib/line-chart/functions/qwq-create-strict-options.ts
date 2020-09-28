@@ -1,4 +1,4 @@
-import { qwqGetTableau10Colors } from '../../shared';
+import { qwqGetTableau10Colors } from 'qwq-charts-shared';
 import {
   IQwqLineChartOptions,
   IQwqLineChartOptionsStrict,
