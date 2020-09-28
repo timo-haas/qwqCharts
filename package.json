@@ -5,6 +5,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve qwq-charts-demo",
+    "start:demo": "ng serve qwq-charts-demo",
+    "start:lib": "ng build qwq-charts --watch",
     "build": "ng build qwq-charts-shared --prod && ng build qwq-charts --prod",
     "test": "ng test qwq-charts-demo",
     "lint": "ng lint qwq-charts",

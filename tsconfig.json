@@ -17,12 +17,10 @@
     ],
     "paths": {
       "qwq-charts": [
-        "dist/qwq-charts",
-        "dist/qwq-charts/qwq-charts"
+        "projects/qwq-charts/src"
       ],
       "qwq-charts-shared": [
-        "dist/qwq-charts-shared/qwq-charts-shared",
-        "dist/qwq-charts-shared"
+        "projects/qwq-charts-shared/src"
       ]
     }
   }

@@ -9,9 +9,19 @@
   },
   "files": [
     "src/main.ts",
-    "src/polyfills.ts"
+    "src/polyfills.ts",
+  ],
+  "exclude": [
+    "src/test.ts",
+    "**/*.spec.ts",
+    "../qwq-charts/src/test.ts",
+    "../qwq-charts/**/*.spec.ts",
+    "../qwq-charts-shared/src/test.ts",
+    "../qwq-charts-shared/**/*.spec.ts",
   ],
   "include": [
-    "src/**/*.d.ts"
+    "src/**/*.d.ts",
+    "../qwq-charts/src/**/*.ts",
+    "../qwq-charts-shared/src/**/*.ts",
   ]
 }

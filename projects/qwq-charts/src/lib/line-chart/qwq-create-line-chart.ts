@@ -98,7 +98,7 @@ export function qwqCreateLineChart<L, T>(
         return scaleOptions.yScaleFx(point.yValue);
       })
       .attr('fill', (point) => point.color)
-      .attr('r', `${lineWidth * 2.7}em`);
+      .attr('r', `${lineWidth * 2.8}em`);
   }
   return svgElement;
 }
